@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Feedback - Skyblock Value Web</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-surface-variant": "#3e4850",
+                        "primary": "#006591",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#4d2b00",
+                        "tertiary-fixed": "#ffdcbd",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "outline": "#6e7881",
+                        "primary-fixed": "#c9e6ff",
+                        "outline-variant": "#bec8d2",
+                        "on-background": "#131b2e",
+                        "background": "#faf8ff",
+                        "surface-variant": "#dae2fd",
+                        "surface": "#faf8ff",
+                        "error": "#ba1a1a",
+                        "on-surface": "#131b2e",
+                        "on-primary-fixed": "#001e2f",
+                        "on-primary-container": "#003751",
+                        "on-tertiary-fixed": "#2c1600",
+                        "tertiary-container": "#de8712",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e2e7ff",
+                        "inverse-surface": "#283044",
+                        "inverse-primary": "#89ceff",
+                        "surface-dim": "#d2d9f4",
+                        "surface-tint": "#006591",
+                        "surface-container": "#eaedff",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#eef0ff",
+                        "secondary-fixed": "#acedff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "tertiary-fixed-dim": "#ffb86e",
+                        "surface-container-low": "#f2f3ff",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-highest": "#dae2fd",
+                        "secondary-container": "#57dffe",
+                        "tertiary": "#8a5100",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#0ea5e9",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#89ceff",
+                        "secondary": "#00687a",
+                        "on-primary-fixed-variant": "#004c6e",
+                        "on-secondary-container": "#006172",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "display-shimmer": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-shimmer": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1.5px solid rgba(255, 255, 255, 1);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.1);
+        }
+        
+        @keyframes modalEnter {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .modal-animate {
+            animation: modalEnter 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .bg-gradient-cloud {
+            background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.1), transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative overflow-hidden bg-gradient-cloud font-body-md text-body-md">
+<!-- Mock Background Content (Landing Page Shell) -->
+<div class="absolute inset-0 z-0 opacity-40 blur-sm pointer-events-none">
+<header class="flex justify-between items-center px-margin-desktop h-20 w-full max-w-container-max mx-auto border-b border-white/50 backdrop-blur-md">
+<div class="font-display-shimmer text-display-shimmer text-primary bg-clip-text">SKYBLOCK VALUE WEB</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-medium" href="#">Home</a>
+<a class="text-on-surface-variant font-medium" href="#">Market</a>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop mt-12 grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-8 h-64 bg-surface-variant/50 rounded-xl border border-white/50"></div>
+<div class="col-span-12 md:col-span-4 h-64 bg-surface-variant/50 rounded-xl border border-white/50"></div>
+<div class="col-span-12 h-96 bg-surface-variant/50 rounded-xl border border-white/50 mt-gutter"></div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-margin-mobile md:p-margin-desktop bg-inverse-surface/40 backdrop-blur-md transition-opacity duration-300">
+<!-- Feedback Modal -->
+<div class="glass-panel w-full max-w-lg rounded-xl p-8 relative modal-animate flex flex-col gap-6">
+<!-- Close Button (Decorative) -->
+<button class="absolute top-4 right-4 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- Header -->
+<div class="text-center">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Submit Feedback</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Help us improve the Skyblock Explorer community edition.</p>
+</div>
+<!-- Form -->
+<form class="flex flex-col gap-5">
+<!-- Feedback Type -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Feedback Type</label>
+<div class="grid grid-cols-3 gap-3">
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="feedback_type" type="radio" value="bug"/>
+<div class="w-full text-center py-3 rounded-lg border border-outline-variant bg-surface/40 peer-checked:bg-primary-container/10 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-surface-variant/50 text-sm font-medium">
+                                Bug
+                            </div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="feedback_type" type="radio" value="suggestion"/>
+<div class="w-full text-center py-3 rounded-lg border border-outline-variant bg-surface/40 peer-checked:bg-primary-container/10 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-surface-variant/50 text-sm font-medium">
+                                Suggestion
+                            </div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="feedback_type" type="radio" value="value"/>
+<div class="w-full text-center py-3 rounded-lg border border-outline-variant bg-surface/40 peer-checked:bg-primary-container/10 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-surface-variant/50 text-sm font-medium">
+                                Value Update
+                            </div>
+</label>
+</div>
+</div>
+<!-- Description -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2" for="description">Description</label>
+<textarea class="w-full bg-surface/40 border border-outline-variant rounded-lg p-3 text-on-background focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none placeholder:text-outline" id="description" placeholder="Describe the issue or suggestion..." rows="4"></textarea>
+</div>
+<!-- Action -->
+<button class="mt-4 w-full bg-primary hover:bg-primary/90 text-on-primary font-label-sm text-label-sm py-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-[0_4px_14px_rgba(14,165,233,0.3)] hover:shadow-[0_6px_20px_rgba(14,165,233,0.4)] hover:-translate-y-0.5" type="button">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+                    Submit to Discord
+                </button>
+</form>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKYBLOCK BMGO</title>
+  <!-- Tailwind CSS for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fun, blocky fonts to match the game aesthetic -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+     /* Global Sky Theme */
+     body {
+         margin: 0;
+         overflow-x: hidden;
+         background: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);
+         font-family: 'Nunito', sans-serif;
+         min-height: 100vh;
+     }
+     
+     .title-font {
+         font-family: 'Fredoka One', cursive;
+         letter-spacing: 2px;
+     }
+
+     /* Cloud Background Animation */
+     .clouds {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         z-index: -1;
+         background: url('https://www.transparenttextures.com/patterns/clouds.png');
+         animation: moveClouds 60s linear infinite;
+         opacity: 0.6;
+     }
+     @keyframes moveClouds {
+         0% { background-position: 0 0; }
+         100% { background-position: 1000px 0; }
+     }
+
+     /* Skyblock Floating Animation */
+     .floating-island {
+         animation: float 4s ease-in-out infinite;
+     }
+     @keyframes float {
+         0% { transform: translateY(0px); }
+         50% { transform: translateY(-12px); }
+         100% { transform: translateY(0px); }
+     }
+     
+     /* Frosted Glass UI */
+     .glass {
+         background: rgba(255, 255, 255, 0.3);
+         backdrop-filter: blur(12px);
+         -webkit-backdrop-filter: blur(12px);
+         border: 2px solid rgba(255, 255, 255, 0.6);
+         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+     }
+     
+     /* Tab Switching Logic */
+     .tab-content { display: none; }
+     .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+     
+     /* Hide scrollbar on bottom nav */
+     .bottom-nav::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="text-slate-800">
+
+  <!-- Animated Cloud Background -->
+  <div class="clouds"></div>
+
+  <!-- Header -->
+  <header class="glass sticky top-0 z-40 p-4 shadow-lg flex justify-between items-center rounded-b-3xl">
+      <div class="flex items-center gap-2">
+          <span class="text-2xl md:text-3xl title-font text-white drop-shadow-md flex items-center gap-2">
+              ☁️ SKYBLOCK BMGO ☁️
+          </span>
+      </div>
+      <button class="bg-white text-blue-500 font-bold px-4 py-2 rounded-xl shadow hover:bg-blue-50 transition hover:scale-105 hidden sm:block">Admin Mode</button>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="p-4 md:p-8 max-w-6xl mx-auto mb-28 mt-4">
+      
+      <!-- HERO / MAIN PAGE TAB -->
+      <section id="tab-home" class="tab-content active">
+          <div class="glass rounded-3xl p-8 md:p-12 text-center floating-island relative overflow-hidden">
+              <div class="absolute -top-10 -right-10 text-9xl opacity-20">☁️</div>
+              <h1 class="text-4xl md:text-5xl title-font text-white mb-6 drop-shadow-lg">Welcome to the Nexus!</h1>
+              
+              <!-- Editable Admin Block -->
+              <div contenteditable="true" class="bg-white/50 p-6 rounded-2xl border-2 border-white/70 text-left cursor-text shadow-inner focus:outline-blue-400">
+                  <div class="inline-block bg-blue-500 text-white font-bold px-3 py-1 rounded-full text-sm mb-3">📢 Tap to Edit Custom Announcement</div>
+                  <p class="text-lg text-slate-800 font-bold">Welcome to the official SKYBLOCK BMGO value list!</p>
+                  <p class="text-slate-700 mt-2">Admins, you can click right here and type whatever you want. This is your blank canvas for updates, news, and rules for the players.</p>
+              </div>
+          </div>
+      </section>
+
+      <!-- ARMOR TAB -->
+      <section id="tab-armors" class="tab-content">
+          <div class="flex justify-between items-center mb-6">
+              <h2 class="text-3xl title-font text-white drop-shadow">Armor Sets</h2>
+              <button class="bg-white/80 text-blue-600 font-bold px-4 py-2 rounded-xl shadow hover:bg-white">+ Add Item</button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Item Card Example -->
+              <div class="glass rounded-3xl p-5 flex flex-col hover:-translate-y-2 transition-transform duration-300 relative group">
+                  <span class="absolute top-4 right-4 bg-yellow-400 text-yellow-900 font-bold text-xs px-2 py-1 rounded-full shadow">LEGENDARY</span>
+                  <div class="h-32 flex justify-center items-center floating-island">
+                      <img src="https://cdn3.emoji.gg/emojis/8472_Diamond_Chestplate.png" alt="Armor" class="h-24 drop-shadow-xl filter hue-rotate-15">
+                  </div>
+                  <h3 class="text-2xl title-font text-white drop-shadow mt-4">Dragon Armor</h3>
+                  <div class="bg-white/40 rounded-xl p-2 mt-2 border border-white/50">
+                      <p class="text-blue-900 font-bold text-lg text-center">Value: 15,000,000</p>
+                  </div>
+                  <button class="mt-4 bg-blue-500/10 text-blue-900 py-2 rounded-xl font-bold border-2 border-blue-400 hover:bg-blue-500 hover:text-white transition group-hover:shadow-md">+ Add Detail</button>
+              </div>
+          </div>
+      </section>
+
+      <!-- SWORDS TAB -->
+      <section id="tab-swords" class="tab-content">
+          <div class="flex justify-between items-center mb-6">
+              <h2 class="text-3xl title-font text-white drop-shadow">Swords & Weapons</h2>
+              <button class="bg-white/80 text-blue-600 font-bold px-4 py-2 rounded-xl shadow hover:bg-white">+ Add Item</button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="glass rounded-3xl p-5 flex flex-col hover:-translate-y-2 transition-transform duration-300 relative group">
+                  <span class="absolute top-4 right-4 bg-purple-400 text-purple-900 font-bold text-xs px-2 py-1 rounded-full shadow">EPIC</span>
+                  <div class="h-32 flex justify-center items-center floating-island">
+                      <span class="text-7xl drop-shadow-xl">⚔️</span>
+                  </div>
+                  <h3 class="text-2xl title-font text-white drop-shadow mt-4">Void Blade</h3>
+                  <div class="bg-white/40 rounded-xl p-2 mt-2 border border-white/50">
+                      <p class="text-blue-900 font-bold text-lg text-center">Value: 20,500,000</p>
+                  </div>
+                  <button class="mt-4 bg-blue-500/10 text-blue-900 py-2 rounded-xl font-bold border-2 border-blue-400 hover:bg-blue-500 hover:text-white transition group-hover:shadow-md">+ Add Detail</button>
+              </div>
+          </div>
+      </section>
+
+      <!-- EMPTY TAB TEMPLATE (For Pets, VIP, Enchants, etc) -->
+      <section id="tab-empty" class="tab-content">
+          <h2 class="text-3xl title-font text-white mb-6 drop-shadow" id="empty-title">Category</h2>
+          <div class="glass rounded-3xl p-12 text-center border-dashed border-4 border-white/60">
+              <span class="text-6xl mb-4 block">📦</span>
+              <p class="text-white text-xl font-bold drop-shadow">No items added to this category yet.</p>
+              <button class="mt-6 bg-white text-blue-600 font-bold px-6 py-3 rounded-xl shadow hover:scale-105 transition">+ Add First Item</button>
+          </div>
+      </section>
+
+  </main>
+
+  <!-- Feedback Modal Popup -->
+  <div id="feedback-modal" class="fixed inset-0 bg-blue-900/40 hidden justify-center items-center z-[100] backdrop-blur-md px-4">
+      <div class="glass bg-white/90 p-6 rounded-3xl w-full max-w-md shadow-2xl scale-100 transform transition-all">
+          <div class="flex justify-between items-center mb-4">
+              <h3 class="text-2xl title-font text-blue-600">Feedback</h3>
+              <span class="text-3xl">📝</span>
+          </div>
+          <p class="text-slate-600 font-bold mb-4">Message goes straight to the Discord Server!</p>
+          <textarea id="feedback-text" class="w-full h-32 rounded-2xl border-4 border-blue-200 p-4 mb-4 focus:outline-none focus:border-blue-400 text-lg font-semibold text-slate-700" placeholder="Suggest a value change or report a bug..."></textarea>
+          <div class="flex justify-end gap-3">
+              <button onclick="toggleFeedback()" class="px-5 py-3 rounded-xl font-bold text-slate-500 bg-slate-100 hover:bg-slate-200">Cancel</button>
+              <button onclick="sendFeedback()" class="px-5 py-3 rounded-xl font-bold text-white bg-blue-500 hover:bg-blue-600 shadow-lg">Send to Discord</button>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Success Toast Notification -->
+  <div id="toast" class="fixed top-24 right-4 bg-white border-4 border-green-400 text-green-600 font-bold px-6 py-4 rounded-2xl shadow-2xl transform transition-all duration-300 translate-x-[150%] z-[200] flex items-center gap-3">
+      <span class="text-2xl">✅</span> Feedback sent to Discord!
+  </div>
+
+  <!-- Bottom Navigation Bar (Scrollable horizontally on small screens) -->
+  <nav class="fixed bottom-0 w-full glass border-t-2 border-white/60 pb-safe z-50 rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+      <div class="flex overflow-x-auto bottom-nav gap-2 px-4 py-4 items-center snap-x">
+          <button onclick="switchTab('tab-home', this)" class="nav-btn bg-white text-blue-600 border-2 border-blue-400 px-5 py-2.5 rounded-2xl font-bold whitespace-nowrap shadow-md snap-center">Home</button>
+          <button onclick="switchTab('tab-armors', this)" class="nav-btn bg-white/40 hover:bg-white/70 text-slate-700 border-2 border-transparent px-5 py-2.5 rounded-2xl font-bold whitespace-nowrap transition snap-center">Armors</button>
+          <button onclick="switchTab('tab-swords', this)" class="nav-btn bg-white/40 hover:bg-white/70 text-slate-700 border-2 border-transparent px-5 py-2.5 rounded-2xl font-bold whitespace-nowrap transition snap-center">Swords</button>
+          <button onclick="showEmptyTab('Pets', this)" class="nav-btn bg-white/40 hover:bg-white/70 text-slate-700 border-2 border-transparent px-5 py-2.5 rounded-2xl font-bold whitespace-nowrap transition snap-center">Pets</button>
+          <button onclick="showEmptyTab('VIP Sets', this)" class="nav-btn bg-white/40 hover:bg-white/70 text-slate-700 border-2 border-transparent px-5 py-2.5 rounded-2xl font-bold whitespace-nowrap transition snap-center">VIP Sets</button>
+          <button onclick="showEmptyTab('Enchants', this)" class="nav-btn bg-white/40 hover:bg-white/70 text-slate-700 border-2 border-transparent px-5 py-2.5 rounded-2xl font-bold whitespace-nowrap transition snap-center">Enchants</button>
+          <button onclick="showEmptyTab('Others', this)" class="nav-btn bg-white/40 hover:bg-white/70 text-slate-700 border-2 border-transparent px-5 py-2.5 rounded-2xl font-bold whitespace-nowrap transition snap-center">Others</button>
+          
+          <button onclick="toggleFeedback()" class="bg-blue-500 text-white px-5 py-2.5 rounded-2xl font-bold whitespace-nowrap shadow-lg ml-auto hover:bg-blue-600 shrink-0 flex items-center gap-2 sticky right-0">
+             💬 Feedback
+          </button>
+      </div>
+  </nav>
+
+  <!-- JavaScript to make the buttons work -->
+  <script>
+      function resetNavButtons() {
+          document.querySelectorAll('.nav-btn').forEach(btn => {
+              btn.classList.remove('bg-white', 'text-blue-600', 'border-blue-400', 'shadow-md');
+              btn.classList.add('bg-white/40', 'text-slate-700', 'border-transparent');
+          });
+      }
+
+      function highlightNavButton(btnElement) {
+          resetNavButtons();
+          btnElement.classList.remove('bg-white/40', 'text-slate-700', 'border-transparent');
+          btnElement.classList.add('bg-white', 'text-blue-600', 'border-blue-400', 'shadow-md');
+      }
+
+      function switchTab(tabId, btnElement) {
+          document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+          document.getElementById(tabId).classList.add('active');
+          if(btnElement) highlightNavButton(btnElement);
+      }
+
+      // Reuses the empty tab template for categories without items yet
+      function showEmptyTab(categoryName, btnElement) {
+          document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+          document.getElementById('empty-title').innerText = categoryName;
+          document.getElementById('tab-empty').classList.add('active');
+          if(btnElement) highlightNavButton(btnElement);
+      }
+
+      function toggleFeedback() {
+          const modal = document.getElementById('feedback-modal');
+          modal.classList.toggle('hidden');
+          modal.classList.toggle('flex');
+      }
+      
+      function sendFeedback() {
+          const text = document.getElementById('feedback-text').value;
+          if(!text) return; // Don't send if empty
+          
+          toggleFeedback(); // Close modal
+          document.getElementById('feedback-text').value = ''; // Clear text
+          
+          // Trigger the green success toast animation
+          const toast = document.getElementById('toast');
+          toast.classList.remove('translate-x-[150%]');
+          
+          // Hide it again after 3 seconds
+          setTimeout(() => {
+              toast.classList.add('translate-x-[150%]');
+          }, 3000);
+      }
+  </script>
+</body>
+</html>
